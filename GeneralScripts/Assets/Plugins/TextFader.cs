@@ -3,7 +3,7 @@ using System.Collections;
 using System;
 public class TextFader : MonoBehaviour 
 {
-//class that fakes a text, blends it in and then out again
+//class that takes a text, blends it in and then out again
 //text to display
 public string vText;
 //style to display in
@@ -13,6 +13,9 @@ public GUISkin vSkin;
 public int vX = 10;
 public int vY = 40;
 
+//speed
+public int speed = 4;
+
 //fading status 0=idle 1=fading in 2 = fading oout
 private int vStatus = 0;
 //current alpha
@@ -20,7 +23,11 @@ private float vCurrA = 0.0F;
 //string array stack
 public string[] vStack;
 
-
+void Awake()
+{
+	vX = Screen.width/2-50;
+	vY = Screen.height-100;
+}
 void Update () 
 {
 	//check if any messages are queued up and fade em in and out
@@ -28,7 +35,7 @@ void Update ()
 	{
 		if(vStatus == 1)
 		{
-			vCurrA = Mathf.Lerp(vCurrA, 1.0F, Time.deltaTime*2);
+			vCurrA = Mathf.Lerp(vCurrA, 1.0F, Time.deltaTime*speed);
 			
 			if(vCurrA >= 0.99)
 			{
@@ -37,7 +44,7 @@ void Update ()
 		}
 		else if(vStatus == 2)
 		{
-			vCurrA = Mathf.Lerp(vCurrA, 0.0F, Time.deltaTime*4);
+			vCurrA = Mathf.Lerp(vCurrA, 0.0F, Time.deltaTime*speed*2);
 			
 			if(vCurrA <= 0.01)
 			{

@@ -44,6 +44,7 @@ public class CheckpointManager : MonoBehaviour
 		{
 			
 			player.transform.position = new Vector3(current.transform.position.x,current.transform.position.y+1,current.transform.position.z);
+			player.transform.rotation = current.transform.rotation;
 			pls.Trail = Instantiate(pls.TrailPref, pls.TrailHolder.transform.position, pls.TrailHolder.transform.rotation) as GameObject;
 			pls.Trail.transform.parent = pls.TrailHolder.transform;
 		}

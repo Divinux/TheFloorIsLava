@@ -32,6 +32,8 @@ public class cursorlocker : MonoBehaviour
 			m2.sensitivityX = hSliderValue;
 			m2.sensitivityY = hSliderValue;
 		}
+		 camera.layerCullSpherical = true;
+		 Debug.Log(camera.layerCullSpherical);
 	}
 	
 	void OnGUI()

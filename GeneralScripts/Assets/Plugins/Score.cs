@@ -25,6 +25,12 @@ public class Score : MonoBehaviour
 	{
 	cam = GameObject.FindWithTag("MainCamera");
 	fader = cam.GetComponent<TextFader>();
+	
+	/*///*
+	PlayerPrefs.SetFloat("lvl0", 0);
+	PlayerPrefs.SetFloat("lvl1", 0);
+	PlayerPrefs.SetFloat("lvl2", 0);
+	PlayerPrefs.SetFloat("lvl3", 0);*/
 	}
 
 	void Update () 
@@ -82,7 +88,8 @@ public class Score : MonoBehaviour
 			Debug.Log("GameWon");
 			vDone = 1;
 			vFinalTime = vTime;
-			if(PlayerPrefs.GetFloat("lvl" + vLvl) > vFinalTime){
+			Debug.Log("lvl" + vLvl);
+			if(PlayerPrefs.GetFloat("lvl" + vLvl) > vFinalTime || PlayerPrefs.GetFloat("lvl" + vLvl) == 0){
 			PlayerPrefs.SetFloat("lvl" + vLvl, vFinalTime);
 			}
 			m1.enabled = !m1.enabled;
