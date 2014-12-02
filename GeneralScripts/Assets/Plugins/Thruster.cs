@@ -33,39 +33,39 @@ public class Thruster : MonoBehaviour
 	{
 		if(vEnabledLeft)
 		{
-		//left bg
-		 GUI.Label(new Rect(10,Screen.height - 40,100,15),UIframew);
-		
-		 //left cd
-		 float a = vCool1/vMaxCool;
-		 a *= max;
-		 a = max-a;
-		 if(a == max)
-		 {
-		 GUI.DrawTexture(new Rect(11,Screen.height - 36,a,7),green);
-		 }
-		 else
-		 {
-		 GUI.DrawTexture(new Rect(11,Screen.height - 36,a,7),greendark);
-		 }
-		 }
-		 if(vEnabledRight)
-		 {
-		  //right bg
-		 GUI.Label(new Rect(Screen.width - 110,Screen.height - 40,100,15),UIframew);
-		 //right cd
-		  float b = vCool2/vMaxCool;
-		 b *= max;
-		 b = max-b;
-		  if(b == max)
-		 {
-		 GUI.DrawTexture(new Rect(Screen.width - 109,Screen.height - 36,b,7),green);
+			//left bg
+			GUI.Label(new Rect(10,Screen.height - 40,100,15),UIframew);
+			
+			//left cd
+			float a = vCool1/vMaxCool;
+			a *= max;
+			a = max-a;
+			if(a == max)
+			{
+				GUI.DrawTexture(new Rect(11,Screen.height - 36,a,7),green);
 			}
 			else
-		 {
-		 GUI.DrawTexture(new Rect(Screen.width - 109,Screen.height - 36,b,7),greendark);
-		 }
-		 }
+			{
+				GUI.DrawTexture(new Rect(11,Screen.height - 36,a,7),greendark);
+			}
+		}
+		if(vEnabledRight)
+		{
+			//right bg
+			GUI.Label(new Rect(Screen.width - 110,Screen.height - 40,100,15),UIframew);
+			//right cd
+			float b = vCool2/vMaxCool;
+			b *= max;
+			b = max-b;
+			if(b == max)
+			{
+				GUI.DrawTexture(new Rect(Screen.width - 109,Screen.height - 36,b,7),green);
+			}
+			else
+			{
+				GUI.DrawTexture(new Rect(Screen.width - 109,Screen.height - 36,b,7),greendark);
+			}
+		}
 	}
 	void Awake () 
 	{
@@ -76,15 +76,15 @@ public class Thruster : MonoBehaviour
 	
 	void Update () 
 	{
-	if(locker.wasLocked == true){
-		if (Input.GetMouseButtonDown(0) && vEnabledLeft)
-		{
-			vFired = true;
-		}
-		if (Input.GetMouseButtonDown(1) && vEnabledRight)
-		{
-			vFired2 = true;
-		}
+		if(locker.wasLocked == true){
+			if (Input.GetMouseButtonDown(0) && vEnabledLeft)
+			{
+				vFired = true;
+			}
+			if (Input.GetMouseButtonDown(1) && vEnabledRight)
+			{
+				vFired2 = true;
+			}
 		}
 		
 	}
@@ -97,7 +97,7 @@ public class Thruster : MonoBehaviour
 		}
 		else
 		{
-		vCool1 = 0;
+			vCool1 = 0;
 		}
 		if(vCool2 >= 1)
 		{
@@ -114,8 +114,8 @@ public class Thruster : MonoBehaviour
 				player.rigidbody.AddForce(cam.transform.forward * strength, ForceMode.Impulse);	
 				vCool1 = vMaxCool;
 				vFired = false;
-				 audio.clip = thr2;
-					audio.Play();
+				audio.clip = thr2;
+				audio.Play();
 			}
 			else
 			{
@@ -129,8 +129,8 @@ public class Thruster : MonoBehaviour
 				player.rigidbody.AddForce(-cam.transform.forward * strength, ForceMode.Impulse);	
 				vCool2 = vMaxCool;
 				vFired2 = false;
-				 audio.clip = thr1;
-    audio.Play();
+				audio.clip = thr1;
+				audio.Play();
 			}
 			else
 			{
