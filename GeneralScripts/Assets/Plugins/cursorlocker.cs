@@ -56,22 +56,30 @@ public class cursorlocker : MonoBehaviour
 			
 			if (GUI.Button(new Rect(15, Screen.height - 95, 100, 30), "Back", "label"))
 			{
+				SaveOptions();
+				
 				Screen.lockCursor = !Screen.lockCursor;
 				paused = !paused;
 				m1.enabled = !m1.enabled;
-			m2.enabled = !m2.enabled;
+				m2.enabled = !m2.enabled;
 			}
 			
 			if (GUI.Button(new Rect(135, Screen.height - 95, 100, 30), "Save Options", "label"))
 			{
-				PlayerPrefs.SetFloat("sensitivity", hSliderValue);
+				SaveOptions();
 			}
 			if (GUI.Button(new Rect(255, Screen.height - 95, 100, 30), "Main Menu", "label"))
 			{
+				SaveOptions();
 				Application.LoadLevel(0);
 			}
 			GUI.contentColor = Color.white;  
 		}
+	}
+	
+	void SaveOptions()
+	{
+		PlayerPrefs.SetFloat("sensitivity", hSliderValue);
 	}
 	
 	void Update() 
