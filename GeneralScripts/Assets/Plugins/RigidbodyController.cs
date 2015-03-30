@@ -30,6 +30,8 @@ public class RigidbodyController : MonoBehaviour
 	public GameObject TrailPref;
 	//trail position
 	public GameObject TrailHolder;
+	
+	
 
 	void Awake () 
 	{
@@ -42,6 +44,7 @@ public class RigidbodyController : MonoBehaviour
 	
 	void Update()
 	{
+		//fGroundCheck();
 		if ( Input.GetButtonDown("Jump") && onGround ) 
 		{
 			vJumped = true;
@@ -81,6 +84,8 @@ public class RigidbodyController : MonoBehaviour
 	{
 		if(Input.GetAxis("Horizontal") != 0F || Input.GetAxis("Vertical") != 0F)
 			{
+				
+				//actual movement
 				Vector3 t = transform.TransformDirection(new Vector3(Input.GetAxis("Horizontal") * walkSpeed * a,velCurrent.y,Input.GetAxis("Vertical") * walkSpeed * a));
 				rigidbody.AddForce(t/*, ForceMode.Impulse*/);	
 				//  rigidbody.velocity = transform.TransformDirection(new Vector3(Input.GetAxis("Horizontal") * walkSpeed,velCurrent.y,Input.GetAxis("Vertical") * walkSpeed));
@@ -93,10 +98,12 @@ public class RigidbodyController : MonoBehaviour
 		if (Physics.Raycast(transform.position, Vector3.down, i))
 		{
 			onGround = true;
+			
 		}
 		else
 		{
 			onGround = false;
+			
 		}
 	}
 }
